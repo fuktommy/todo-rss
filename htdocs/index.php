@@ -27,8 +27,6 @@
 namespace Fuktommy\TodoRss;
 
 require_once __DIR__ . '/../libs/bootstrap.php';
-use Fuktommy\TodoRss\Bootstrap;
-use Fuktommy\PubSubHubbub;
 use Fuktommy\WebIo;
 
 
@@ -43,7 +41,6 @@ class IndexAction implements WebIo\Action
      */
     public function execute(WebIo\Context $context)
     {
-        $context->putHeader('Content-Type', 'text/html; charset=utf-8');
         $nickname = $context->get('cookie', 'nickname', '');
 
         if (empty($nickname)) {

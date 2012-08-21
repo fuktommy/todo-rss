@@ -30,7 +30,16 @@
 </form>
 
 {if $nickname && $items}
-    {include file="todoitems.tpl" _nickname=$nickname _items=$items}
+  {include file="todoitems.tpl" _nickname=$nickname _items=$items}
+
+  {strip}
+    <div class="well feed-link">
+      <a href="/feed/{$nickname|escape:"url"}">
+        <img src="/feed-icon-28x28.png" height="28" width="28" alt="" />
+        RSSリーダーに登録してください
+      </a>
+    </div>
+  {/strip}
 {/if}
 
 {include file="footer.tpl"}

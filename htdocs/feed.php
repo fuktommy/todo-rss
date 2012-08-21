@@ -27,14 +27,14 @@
 namespace Fuktommy\TodoRss;
 
 require_once __DIR__ . '/../libs/bootstrap.php';
-use Fuktommy\PubSubHubbub;
+use Fuktommy\TodoRss\Bootstrap;
 use Fuktommy\WebIo;
 
 
 /**
- * Add Action
+ * Atom Feed
  */
-class AddAction implements WebIo\Action
+class FeedAction implements WebIo\Action
 {
     /**
      * Execute
@@ -42,32 +42,23 @@ class AddAction implements WebIo\Action
      */
     public function execute(WebIo\Context $context)
     {
-        $nickname = $context->get('post', 'nickname', '');
-        $nickname = preg_replace('/[^-_A-Za-z0-9]/', '_', $nickname);
-        $body = $context->get('post', 'body');
-
-        if (empty($nickname) || empty($body)
-            || (! $context->isSameOriginReferer())) {
+        $pathInfo = $context->get('server', 'PATH_INFO', '');
+        if (! preg_match('<^/([-_A-Za-z0-9]+)$>', $pathInfo, $matches)) {
             $context->putHeader('400 Bad Request HTTP/1.0');
-            return;
         }
+        $nickname = $matches[1];
 
-        $address = $context->get('server', 'REMOTE_ADDR');
-        $logBody = preg_replace('/\s+/', ' ', $body);
-        $context->getLog('todo.rss')
-                ->info("{$nickname} add {$logBody} from {$address}");
+        $todolist = new TodoList($context->getResource());
+        $items = $todolist->getItemsByNickname($nickname);
 
-        $list = new TodoList($context->getResource());
-        $list->setUp();
-        $list->removeOlderThan(time() - 3 * 24 * 60 * 60);
-        $list->append($nickname, $body);
-        $list->commit();
-
-        $expire = time() + 365 * 24 * 60 * 60;
-        $context->setCookie('nickname', $nickname, $expire);
-        $context->putHeader('Location', '/');
+        $context->putHeader('Content-Type', 'text/xml; charset=utf-8');
+        $smarty = $context->getSmarty();
+        $smarty->assign('config', $context->config);
+        $smarty->assign('nickname', $nickname);
+        $smarty->assign('items', $items);
+        $smarty->display('atom.tpl');
     }
 }
 
 
-Controller::factory()->run(new AddAction(), Bootstrap::getContext());
+Controller::factory()->run(new FeedAction(), Bootstrap::getContext());

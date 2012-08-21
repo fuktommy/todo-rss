@@ -10,11 +10,13 @@ ini_set('user_agent', 'https://github.com/fuktommy/todo-rss');
 
 // configration
 return array(
+    'site_top' => 'http://todo.fuktommy.com',
+
     // PubSubHubbub. set empty to skip publish.
     'push_publisher' => 'https://pubsubhubbub.appspot.com/publish',
 
-    'db_path'       => "{$appRoot}/data/todo.sqlite3",
-    'log_dir'       => "{$appRoot}/log",
+    'db_path' => "{$appRoot}/data/todo.sqlite3",
+    'log_dir' => "{$appRoot}/log",
 
     'smarty_template_dir' => "{$appRoot}/app/templates",
     'smarty_plugins_dir' => array("{$appRoot}/app/plugins"),

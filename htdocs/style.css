@@ -2,3 +2,7 @@
     color: red;
     font-weight: bold;
 }
+
+.feed-link img {
+    vertical-align: bottom;
+}

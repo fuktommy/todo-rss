@@ -1,4 +1,4 @@
-Copyright (c) 2010-2012 Satoshi Fukutomi <info@fuktommy.com>.
+Copyright (c) 2012 Satoshi Fukutomi <info@fuktommy.com>.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -21,3 +21,13 @@ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE.
+
+
+* htdocs/bootstrap
+ - Designed and built with all the love in the world @twitter by @mdo and @fat.
+ - Code licensed under the Apache License v2.0.
+ - Icons from Glyphicons Free, licensed under CC BY 3.0.
+ - http://twitter.github.com/bootstrap/
+* htdocs/feed-icon-28x28.png
+ - (c) 2007 FeedIcons.com, All Rights Reserved.
+ - http://feedicons.com/

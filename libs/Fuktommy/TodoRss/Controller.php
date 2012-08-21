@@ -54,6 +54,7 @@ class Controller
      */
     public function run(WebIo\Action $action, WebIo\Context $context)
     {
+        $context->putHeader('Content-Type', 'text/html; charset=utf-8');
         $action->execute($context);
     }
 }
