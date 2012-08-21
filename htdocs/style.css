@@ -6,3 +6,8 @@
 .feed-link img {
     vertical-align: bottom;
 }
+
+.address {
+    text-align: center;
+    font-style: italic;
+}

@@ -1,6 +1,9 @@
 {include file="header.tpl" _title="TODO.RSS"}
 <h1>TODO.RSS</h1>
 
+<p>TODOを登録して、RSSリーダーに取り込むことができます。
+RSSリーダーの未読管理やマーク機能を利用してTODO管理しましょう。</p>
+
 <form method="post" action="/add" class="well form-horizontal">
 <div>
   <div class="control-group">

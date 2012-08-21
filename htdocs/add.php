@@ -63,6 +63,9 @@ class AddAction implements WebIo\Action
         $list->append($nickname, $body);
         $list->commit();
 
+        $publisher = new PubSubHubbub\Publisher($context->getResource());
+        $publisher->publish("{$context->config['site_top']}/feed/{$nickname}");
+
         $expire = time() + 365 * 24 * 60 * 60;
         $context->setCookie('nickname', $nickname, $expire);
         $context->putHeader('Location', '/');

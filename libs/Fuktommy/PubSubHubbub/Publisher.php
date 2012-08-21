@@ -52,22 +52,16 @@ class Publisher
 
     /**
      * Publish update.
-     * @param string $userId
+     * @param string $feedUrl
      * @throws InvalidArgumentException
      */
-    public function publish($userId)
+    public function publish($feedUrl)
     {
-        if (! ctype_digit($userId)) {
-            throw new InvalidArgumentException("{$userId} is not numeric");
-        }
         $config = $this->_resource->config;
         if (empty($config['push_publisher'])) {
             return;
         }
 
-        $feedUrl = ($userId === $config['gplusfeed_default_userid'])
-                 ? $config['site_top']
-                 : $config['site_top'] . $userId;
         $postData = array(
             'hub.mode' => 'publish',
             'hub.url' => $feedUrl,
@@ -81,7 +75,7 @@ class Publisher
                 'Content-Length: ' . strlen($postString),
             )),
         );
-        $log = $this->_resource->getLog('gplusfeed');
+        $log = $this->_resource->getLog('pubsubhubbub');
         $log->info("publishing {$feedUrl}");
         try {
             file_get_contents(

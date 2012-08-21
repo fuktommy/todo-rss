@@ -41,7 +41,10 @@ class IndexAction implements WebIo\Action
      */
     public function execute(WebIo\Context $context)
     {
-        $nickname = $context->get('cookie', 'nickname', '');
+        $nickname = $context->get('get', 'nickname');
+        if (empty($nickname)) {
+            $nickname = $context->get('cookie', 'nickname', '');
+        }
 
         if (empty($nickname)) {
             $items = array();
