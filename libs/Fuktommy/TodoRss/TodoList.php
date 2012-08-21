@@ -88,7 +88,7 @@ class TodoList
         );
         $state->execute(array('nickname' => $nickname));
         return array_map(function ($r) { return new Item($r); },
-                         $state->fetchAll(PDO::FETCH_ASSOC));
+                         $state->fetchAll(\PDO::FETCH_ASSOC));
     }
 
     /**
@@ -105,7 +105,12 @@ class TodoList
         );
         $state->execute(array('id' => $id));
         return array_map(function ($r) { return new Item($r); },
-                         $state->fetchAll(PDO::FETCH_ASSOC));
+                         $state->fetchAll(\PDO::FETCH_ASSOC));
+    }
+
+    private function _timeFormat($unixtime)
+    {
+        return gmstrftime('%FT%TZ', $unixtime);
     }
 
     /**
@@ -119,7 +124,6 @@ class TodoList
         $str = sprintf("%s:%s:%s", mt_rand(), $nickname, $body);
         $id = strtr(base64_encode(sha1($str, true)),
                     array('+' => '-', '/' => '_', '=' => ''));
-        $date = gmstrftime('%FT%TZ', date());
 
         $state = $this->db->prepare(
             "INSERT INTO `todolist`"
@@ -129,8 +133,24 @@ class TodoList
         $state->execute(array(
             'id' => $id,
             'nickname' => $nickname,
-            'date' => $date,
+            'date' => $this->_timeFormat(time()),
             'body' => $body,
+        ));
+    }
+
+    /**
+     * Remove old records.
+     * @param int $threshold unixtime
+     * @throws PDOException
+     */
+    public function removeOlderThan($threshold)
+    {
+        $state = $this->db->prepare(
+            "DELETE FROM `todolist`"
+            . " WHERE `date` <= :date"
+        );
+        $state->execute(array(
+            'date' => $this->_timeFormat($threshold),
         ));
     }
 

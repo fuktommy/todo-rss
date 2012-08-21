@@ -46,9 +46,17 @@ class IndexAction implements WebIo\Action
         $context->putHeader('Content-Type', 'text/html; charset=utf-8');
         $nickname = $context->get('cookie', 'nickname', '');
 
+        if (empty($nickname)) {
+            $items = array();
+        } else {
+            $todolist = new TodoList($context->getResource());
+            $items = $todolist->getItemsByNickname($nickname);
+        }
+
         $smarty = $context->getSmarty();
         $smarty->assign('config', $context->config);
         $smarty->assign('nickname', $nickname);
+        $smarty->assign('items', $items);
         $smarty->display('index.tpl');
     }
 }

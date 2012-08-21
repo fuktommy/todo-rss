@@ -60,6 +60,7 @@ class AddAction implements WebIo\Action
 
         $list = new TodoList($context->getResource());
         $list->setUp();
+        $list->removeOlderThan(time() - 3 * 24 * 60 * 60);
         $list->append($nickname, $body);
         $list->commit();
 

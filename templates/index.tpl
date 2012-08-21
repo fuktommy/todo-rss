@@ -15,7 +15,10 @@
     <label class="control-label" for="body">TODO</label>
     <div class="controls">
       <textarea rows="5" name="body" id="body" class="input-xxlarge"></textarea>
-      <div class="help-block">プライバシー保護とかないんでよろしく</div>
+      <div class="help-block"><ul class="unstyled">
+        <li>プライバシー保護の仕組みはないので、公開できる情報のみ書いてください</li>
+        <li>データは消えたり書き変わったりする可能性があります</li>
+      </ul></div>
     </div>
   </div>
 
@@ -25,4 +28,9 @@
 
 </div>
 </form>
+
+{if $nickname && $items}
+    {include file="todoitems.tpl" _nickname=$nickname _items=$items}
+{/if}
+
 {include file="footer.tpl"}

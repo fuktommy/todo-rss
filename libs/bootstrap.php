@@ -41,6 +41,9 @@ class Bootstrap
         $path = __DIR__ . DIRECTORY_SEPARATOR
               . strtr($className, array('\\' => DIRECTORY_SEPARATOR))
               . '.php';
+        if (! is_file($path)) {
+            throw new \RuntimeException("{$className} is not exists on autoload pathes.");
+        }
         require_once $path;
     }
 
