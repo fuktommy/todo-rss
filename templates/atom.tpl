@@ -13,7 +13,7 @@
 {foreach from=$items item=item}
   <entry>
     <title>{$item->body|mbtruncate:140|escape}</title>
-    <link rel="alternate" href="{$config.site_top}/user/{$item->nickname|escape:"url"}/{$item->date|date_format:"%s"}"/>
+    <link rel="alternate" href="{$config.site_top}/user/{$item->nickname|escape:"url"}/{$item->id|escape:"url"}"/>
     <summary type="text">{$item->body|escape}</summary>
     <content type="html"><![CDATA[
         {$item->body|escape|nl2br}
@@ -21,7 +21,7 @@
     <published>{$item->date|atom_date_format}</published>
     <updated>{$item->date|atom_date_format}</updated>
     <author><name>{$item->nickname|escape}</name></author>
-    <id>tag:fuktommy.com,2012:/{$item->nickname|escape:"url"}/{$item->date|date_format:"%s"}</id>
+    <id>tag:fuktommy.com,2012:/{$item->nickname|escape:"url"}/{$item->id|escape:"url"}</id>
   </entry>
 {/foreach}
 </feed>
