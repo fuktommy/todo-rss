@@ -121,6 +121,27 @@ class TodoList
      */
     public function append($nickname, $body)
     {
+        $exception = null;
+        for ($i = 0; $i < 10; $i++) {
+            try {
+                $this->_do_append($nickname, $body);
+                return;
+            } catch (PDOException $e) {
+                // expect duplicated primary key
+                $exception = $e;
+            }
+        }
+        throw $exception;
+    }
+
+    /**
+     * Append the enrty to todo list. Try one time.
+     * @param string $nickname
+     * @param string $body
+     * @throws PDOException
+     */
+    public function _do_append($nickname, $body)
+    {
         $str = sprintf("%s:%s:%s", mt_rand(), $nickname, $body);
         $id = strtr(base64_encode(sha1($str, true)),
                     array('+' => '-', '/' => '_', '=' => ''));
