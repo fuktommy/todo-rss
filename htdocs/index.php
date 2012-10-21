@@ -57,6 +57,10 @@ class IndexAction implements WebIo\Action
         $smarty->assign('config', $context->config);
         $smarty->assign('nickname', $nickname);
         $smarty->assign('items', $items);
+
+        $csrfBlocker = new WebIo\CsrfBlocker();
+        $csrfBlocker->setTokens($context, $smarty);
+
         $smarty->display('index.tpl');
     }
 }

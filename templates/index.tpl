@@ -30,6 +30,7 @@ RSSリーダーの未読管理やマーク機能を利用してTODO管理しま�
   </div>
 
 </div>
+<input type="hidden" name="token" value="{$token|escape}" />
 </form>
 
 {if $nickname && $items}

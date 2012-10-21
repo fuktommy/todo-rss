@@ -114,18 +114,6 @@ class Context
     }
 
     /**
-     * Referer is same origin
-     * @todo check protocol
-     * @return bool
-     */
-    public function isSameOriginReferer()
-    {
-        $host = $this->get('header', 'Host');
-        $referer = parse_url($this->get('header', 'Referer', ''));
-        return (! empty($host)) && ($host === $referer['host']);
-    }
-
-    /**
      * Put HTTP header.
      * @param string $key
      * @param string $value

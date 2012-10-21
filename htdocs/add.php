@@ -46,8 +46,8 @@ class AddAction implements WebIo\Action
         $nickname = preg_replace('/[^-_A-Za-z0-9]/', '_', $nickname);
         $body = $context->get('post', 'body');
 
-        if (empty($nickname) || empty($body)
-            || (! $context->isSameOriginReferer())) {
+        $csrfBlocker = new WebIo\CsrfBlocker();
+        if (empty($nickname) || empty($body) || ! $csrfBlocker->accept($context)) {
             $context->putHeader('400 Bad Request HTTP/1.0');
             return;
         }
