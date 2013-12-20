@@ -3,7 +3,7 @@
 {foreach from=$_items item=item}
     <li>{if time() - 600 <= strtotime($item->date)}<span class="newmark">NEW</span>{/if}
         {$item->body|escape|nl2br}
-        {assign var=twitter_message value="#todo "|cat:$item->body|mbtruncate:100:"…"|cat:" / RSSでTODO管理→ `$config.site_top`"}
+        {assign var=twitter_message value="#todo "|cat:$item->body|mbtruncate:100:"…"|cat:"\nRSSでTODO管理→`$config.site_top`"}
         <a href="https://twitter.com/?status={$twitter_message|escape:"url"}" target="_blank">Twitterに書く</a>
     </li>
 {/foreach}

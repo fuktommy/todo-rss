@@ -1,7 +1,7 @@
 <?php
 /* CSRF Blocker.
  *
- * Copyright (c) 2012 Satoshi Fukutomi <info@fuktommy.com>.
+ * Copyright (c) 2012,2013 Satoshi Fukutomi <info@fuktommy.com>.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -65,6 +65,10 @@ class CsrfBlocker
             $host = $context->get('server', 'HTTP_HOST');
             $refererHost = parse_url($referer, PHP_URL_HOST);
             return $host === $refererHost;
+        }
+
+        if ($context->isAjax()) {
+            return true;
         }
 
         $cookieToken = $context->get('cookie', $this->cookieTokenKey);

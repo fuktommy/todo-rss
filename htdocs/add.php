@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2012 Satoshi Fukutomi <info@fuktommy.com>.
+ * Copyright (c) 2012,2013 Satoshi Fukutomi <info@fuktommy.com>.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -68,7 +68,10 @@ class AddAction implements WebIo\Action
 
         $expire = time() + 365 * 24 * 60 * 60;
         $context->setCookie('nickname', $nickname, $expire);
-        $context->putHeader('Location', '/');
+
+        if (! $context->isAjax()) {
+            $context->putHeader('Location', '/');
+        }
     }
 }
 

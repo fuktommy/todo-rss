@@ -4,7 +4,7 @@
 <p>TODOを登録して、RSSリーダーに取り込むことができます。
 RSSリーダーの未読管理やマーク機能を利用してTODO管理しましょう。</p>
 
-<form method="post" action="/add" class="well form-horizontal">
+<form method="post" action="/add" class="well form-horizontal" id="addform">
 <div>
   <div class="control-group">
     <label class="control-label" for="nickname">ニックネーム</label>
@@ -45,5 +45,16 @@ RSSリーダーの未読管理やマーク機能を利用してTODO管理しま�
     </div>
   {/strip}
 {/if}
+
+<div>
+別の使い方として以下のようなアクセスをすることでTODOの追加ができます。
+cronから定期的にTODOを追加するなど、いろいろな応用がありそうです。<br />
+<pre><code>wget -O - -q \
+  --post-data 'nickname={$nickname|default:"your-nickname"|escape}&amp;body=eat+spam' \
+  --header='X-Requested-With: xmlhttprequest' \
+  --referer={$config.site_top|escape}/  \
+  {$config.site_top|escape}/add
+</code></pre>
+</div>
 
 {include file="footer.tpl"}
