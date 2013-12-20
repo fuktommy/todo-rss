@@ -24,10 +24,9 @@ SUCH DAMAGE.
 
 
 * htdocs/bootstrap
- - Designed and built with all the love in the world @twitter by @mdo and @fat.
- - Code licensed under the Apache License v2.0.
- - Icons from Glyphicons Free, licensed under CC BY 3.0.
- - http://twitter.github.com/bootstrap/
+ - Bootstrap v3.0.3 (http://getbootstrap.com)
+ - Copyright 2013 Twitter, Inc.
+ - Licensed under http://www.apache.org/licenses/LICENSE-2.0
 * htdocs/feed-icon-28x28.png
  - (c) 2007 FeedIcons.com, All Rights Reserved.
  - http://feedicons.com/

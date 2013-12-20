@@ -9,7 +9,7 @@ RSSリーダーの未読管理やマーク機能を利用してTODO管理しま�
   <div class="control-group">
     <label class="control-label" for="nickname">ニックネーム</label>
     <div class="controls">
-      <input name="nickname" value="{$nickname|escape}" id="nickname" />
+      <input name="nickname" value="{$nickname|escape}" id="nickname" class="form-control" />
       <div class="help-block">英数字と-_のみ使えます</div>
     </div>
   </div>
@@ -17,7 +17,7 @@ RSSリーダーの未読管理やマーク機能を利用してTODO管理しま�
   <div class="control-group">
     <label class="control-label" for="body">TODO</label>
     <div class="controls">
-      <textarea rows="5" name="body" id="body" class="input-xxlarge"></textarea>
+      <textarea rows="5" name="body" id="body" class="form-control"></textarea>
       <div class="help-block"><ul class="unstyled">
         <li>プライバシー保護の仕組みはないので、公開できる情報のみ書いてください</li>
         <li>データは消えたり書き変わったりする可能性があります</li>
@@ -50,7 +50,7 @@ RSSリーダーの未読管理やマーク機能を利用してTODO管理しま�
 別の使い方として以下のようなアクセスをすることでTODOの追加ができます。
 cronから定期的にTODOを追加するなど、いろいろな応用がありそうです。<br />
 <pre><code>wget -O - -q \
-  --post-data 'nickname={$nickname|default:"your-nickname"|escape}&amp;body=eat+spam' \
+  --post-data='nickname={$nickname|default:"your-nickname"|escape}&amp;body=eat+spam' \
   --header='X-Requested-With: xmlhttprequest' \
   --referer={$config.site_top|escape}/  \
   {$config.site_top|escape}/add

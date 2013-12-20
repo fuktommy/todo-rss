@@ -118,7 +118,10 @@ class Context
      * @return bool
      */
     public function isAjax() {
-        return $this->get('server', 'HTTP_X_REQUESTED_WITH') === 'xmlhttprequest';
+        return strcasecmp(
+            $this->get('server', 'HTTP_X_REQUESTED_WITH'),
+            'XMLHttpRequest'
+        ) === 0;
     }
 
     /**
