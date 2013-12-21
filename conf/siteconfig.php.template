@@ -16,6 +16,9 @@ return array(
     //'push_publisher' => 'https://pubsubhubbub.appspot.com/publish',
     'push_publisher' => '',
 
+    // advertise. see templates/ads.tpl
+    'use_ads' => false,
+
     'db_path' => "{$appRoot}/data/todo.sqlite3",
     'log_dir' => "{$appRoot}/log",
 

@@ -36,6 +36,12 @@ RSSリーダーの未読管理やマーク機能を利用してTODO管理しま�
 <input type="hidden" name="token" value="{$token|escape}" />
 </form>
 
+{if $config.use_ads}
+  <div class="ads">
+    {include file="ads.tpl"}
+  </div>
+{/if}
+
 {if $nickname && $items}
   {include file="todoitems.tpl" _nickname=$nickname _items=$items}
 
