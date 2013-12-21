@@ -117,7 +117,8 @@ class Context
      * Access with Ajax or not.
      * @return bool
      */
-    public function isAjax() {
+    public function isAjax()
+    {
         return strcasecmp(
             $this->get('server', 'HTTP_X_REQUESTED_WITH'),
             'XMLHttpRequest'

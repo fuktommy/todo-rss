@@ -51,8 +51,8 @@ RSSリーダーの未読管理やマーク機能を利用してTODO管理しま�
 cronから定期的にTODOを追加するなど、いろいろな応用がありそうです。<br />
 <pre><code>wget -O - -q \
   --post-data='nickname={$nickname|default:"your-nickname"|escape}&amp;body=eat+spam' \
-  --header='X-Requested-With: xmlhttprequest' \
-  --referer={$config.site_top|escape}/  \
+  --header='X-Requested-With: XMLHttpRequest' \
+  --referer={$config.site_top|escape}/ \
   {$config.site_top|escape}/add
 </code></pre>
 </div>
