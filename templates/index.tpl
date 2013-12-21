@@ -26,7 +26,10 @@ RSSリーダーの未読管理やマーク機能を利用してTODO管理しま�
   </div>
 
   <div class="form-actions">
-    <input type="submit" value="登録" class="btn btn-primary" />
+    <button class="btn btn-primary">
+      <i class="glyphicon glyphicon-pencil"></i>
+      登録
+    </button>
   </div>
 
 </div>
