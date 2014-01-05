@@ -57,7 +57,8 @@ RSSリーダーの未読管理やマーク機能を利用してTODO管理しま�
 
 <div>
 別の使い方として以下のようなアクセスをすることでTODOの追加ができます。
-cronから定期的にTODOを追加するなど、いろいろな応用がありそうです。<br />
+cronから定期的にTODOを追加するなど、いろいろな応用がありそうです。
+なおcrontabでは%を\%のようにエスケープする必要があることにご注意ください。<br />
 <pre><code>wget -O - -q \
   --post-data='nickname={$nickname|default:"your-nickname"|escape}&amp;body=eat+spam' \
   --header='X-Requested-With: XMLHttpRequest' \
