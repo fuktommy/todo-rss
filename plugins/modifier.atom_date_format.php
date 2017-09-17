@@ -1,6 +1,4 @@
 <?php
-require_once $smarty->_get_plugin_filepath('shared', 'make_timestamp');
-
 /**
  * Atom date format.
  *
@@ -8,6 +6,9 @@ require_once $smarty->_get_plugin_filepath('shared', 'make_timestamp');
  */
 function smarty_modifier_atom_date_format($string)
 {
+    if (!is_callable('smarty_make_timestamp')) {
+        require_once(SMARTY_PLUGINS_DIR . 'shared.make_timestamp.php');
+    }
     if ($string != '') {
         $timestamp = smarty_make_timestamp($string);
     } elseif ($default_date != '') {
