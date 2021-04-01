@@ -1,3 +1,4 @@
+{*
 {literal}
 <script type="text/javascript"><!--
 amazon_ad_tag="fuktommy-22"; 
@@ -27,3 +28,4 @@ amazon_color_text="333333";
 <iframe src="http://rcm-jp.amazon.co.jp/e/cm?t=fuktommy-22&amp;o=9&amp;p=13&amp;l=ez&amp;f=ifr&amp;f=ifr" width="468" height="60" style="border:none;"></iframe>
 </noscript>
 {/literal}
+*}

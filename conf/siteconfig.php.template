@@ -10,7 +10,7 @@ ini_set('user_agent', 'https://github.com/fuktommy/todo-rss');
 
 // configration
 return array(
-    'site_top' => 'http://todo.fuktommy.com',
+    'site_top' => 'https://todo.fuktommy.com',
 
     // PubSubHubbub. set empty to skip publish.
     //'push_publisher' => 'https://pubsubhubbub.appspot.com/publish',

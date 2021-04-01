@@ -10,7 +10,7 @@ todo.rss
 Install
 -------
 
-1. Install PHP5.3+, Smarty and PEAR::Log
+1. Install PHP5.3+, Smarty and KLogger
 2. Copy conf/siteconfig.php.template to conf/siteconfig.php and modify it
 3. Copy setup.sh.template to setup.sh and modify it
 4. Setup directories in setup.sh and run it
